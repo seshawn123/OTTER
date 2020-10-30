@@ -32,6 +32,10 @@ void Camera::LookAt(const glm::vec3& point) {
 	_normal = -glm::normalize(_position - point);
 	__CalculateView();
 }
+//Ortho
+void Camera::SetPerspective(bool OrthoCam) {
+	__CalculateProjection(OrthoCam);
+}
 
 void Camera::SetUp(const glm::vec3& up) {
 	_up = up;
@@ -62,6 +66,16 @@ const glm::mat4& Camera::GetViewProjection() const {
 
 void Camera::__CalculateProjection() {
 	_projection = glm::perspective(_fovRadians, _aspectRatio, _nearPlane, _farPlane);
+	_isDirty = true;
+}
+
+void Camera::__CalculateProjection(bool OrthoCam) {
+	if (OrthoCam) {
+		_projection = glm::ortho(-5.0f, 5.0f, -5.0f, 5.0f, 0.0f, 100.0f);
+	}
+	else {
+		_projection = glm::perspective(_fovRadians, _aspectRatio, _nearPlane, _farPlane);
+	}
 	_isDirty = true;
 }
 

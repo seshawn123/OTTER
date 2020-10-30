@@ -35,6 +35,8 @@ public:
 	/// </summary>
 	void LookAt(const glm::vec3& point);
 
+	void SetPerspective(bool OrthoCam);
+
 	/// <summary>
 	/// Notifies this camera that the window has resized, and updates our projection matrix
 	/// </summary>
@@ -78,6 +80,7 @@ public:
 	/// </summary>
 	const glm::mat4& GetViewProjection() const;
 
+
 protected:
 	float _nearPlane;
 	float _farPlane;
@@ -98,6 +101,8 @@ protected:
 
 	// Recalculates the projection matrix
 	void __CalculateProjection();
+
+	void __CalculateProjection(bool OrthoCam);
 	// Recalculates the view matrix
 	void __CalculateView();
 };
