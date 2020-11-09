@@ -390,7 +390,7 @@ int main() {
 	Texture2DData::sptr diffuseMap2 = Texture2DData::LoadFromFile("images/Soil_Texture_Diffuse.png");
 
 	Texture2DData::sptr specularMap = Texture2DData::LoadFromFile("images/Stone_001_Specular.png");
-	 
+	
 	// Create a texture from the data
 	Texture2D::sptr diffuse = Texture2D::Create();
 	diffuse->LoadData(diffuseMap);
